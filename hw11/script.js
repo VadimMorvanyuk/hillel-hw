@@ -117,15 +117,15 @@ task9()
 console.log("Task 10")
 const task10 = () => {
     let maxNum = 0;
-    let index = 0;
+
     for(let i = 0; i < arr.length; i++){
-        if(arr[i] > maxNum){
-        	maxNum = arr[i];
-            index = i;
-        }
+        if(arr[i] > maxNum) maxNum = arr[i];
     }
-    let result = arr.splice(index,1)
-    console.log(result)
+    
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== maxNum) arr[i] = null;
+      }
+console.log(maxNum, arr);
 }
 task10()
 
