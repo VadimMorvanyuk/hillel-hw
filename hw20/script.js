@@ -59,10 +59,9 @@ const getEmployee = () => {
     .map((user) => +user.balance.slice(1).split(",").join(""))
     .reduce((sum, balance) => sum + balance);
   let phonesEmployees = [];
-  let filteredEmployees = users.filter(
-    (user) => +user.balance.slice(1).split(",").join("") >= 2000
-  );
-  filteredEmployees.forEach((user) => phonesEmployees.push(user.phone));
+  let filteredEmployees = users
+    .filter((user) => +user.balance.slice(1).split(",").join("") >= 2000)
+    .forEach((user) => phonesEmployees.push(user.phone));
   console.log(phonesEmployees, +sumOfBalance.toFixed(2));
 };
 getEmployee();
