@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main">
+        <form name="userForm">
+            <p>
+              <input type="text" name="firstName" placeholder="Enter your first name here" />
+            </p>
+            <p>
+              <input type="text" name="surName" placeholder="Enter your last name here" />
+            </p>
+            <p>
+              <input type="date" name="date" placeholder="Enter your birthday here" />
+            </p>
+            <p><input type="radio" name="gender" value="Male" /> Male</p>
+            <p><input type="radio" name="gender" value="Female" /> Female</p>
+            <select name="city">
+              <option >Kyiv</option>
+              <option >Odesa</option>
+              <option >New York</option>
+              <option >Los Angeles</option>
+              <option >Lviv</option>
+            </select>
+            <p><textarea name="address" placeholder="Enter your address"></textarea></p>
+            <p><input type="checkbox" name="languages" value="EN" /> English</p>
+            <p><input type="checkbox" name="languages" value="PL" /> Polish</p>
+            <p><input type="checkbox" name="languages" value="UA" /> Ukrainian</p> 
+            <p><input type="button" id="btn" value="Save data" /></p>
+          </form>
+    </div>
+    
+  </body>
+  <script src="script.js"></script>
+</html>
