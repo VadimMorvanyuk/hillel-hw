@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+}
+.container > div {
+  border: 1px solid black;
+  width: 33%;
+  min-height: 100px;
+}
+#form {
+  display: none;
+  max-width: 157px;
+}
