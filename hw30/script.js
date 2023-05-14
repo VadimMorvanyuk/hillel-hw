@@ -18,13 +18,13 @@ function showCategories() {
 }
 function showOrders() {
   const cancel = document.createElement("button");
-  cancel.classList.add("cancel");
-  cancel.innerHTML = "Cancel";
+  const order = localStorage.getItem("myOrders");
   let myOrders = document.createElement("div");
   let categories = document.querySelector(".categories");
+  cancel.classList.add("cancel");
+  cancel.innerHTML = "Cancel";
   categories.innerHTML = "";
   myOrders.classList.add("myOrders");
-  const order = localStorage.getItem("myOrders");
   orders = JSON.parse(order);
   if (orders === null) {
     myOrders.innerHTML = "There aren't any orders yet";
@@ -33,9 +33,9 @@ function showOrders() {
       const order = document.createElement("p");
       const deleteBtn = document.createElement("button");
       const orderInfo = document.createElement("p");
+      let isVisible = false;
       orderInfo.innerHTML = `${item.name} ${item.amount} ${item.price} ${item.date}`;
       deleteBtn.setAttribute("data-id", item.id);
-      let isVisible = false;
       deleteBtn.classList.add("delete");
       deleteBtn.innerHTML = "X";
       order.setAttribute("data-id", item.id);
@@ -69,18 +69,11 @@ function deleteOrders() {
 
   btns.forEach((item) => {
     item.addEventListener("click", (event) => {
-
-
-      
-      // HERE IS MISTAKE
-
       const id = event.target.dataset.id;
-      console.log(orders, id);
-      orders.filter((f) => f.id != id);
+
+      orders = orders.filter((f) => f.id !== +id);
       localStorage.setItem("myOrders", JSON.stringify(orders));
       showOrders();
-
-      // HERE IS MISTAKE
 
       if (orders.length == 0) {
         localStorage.removeItem("myOrders");
