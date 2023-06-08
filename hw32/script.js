@@ -31,7 +31,7 @@ const showTime = () => {
   changeSrc(sec1, `./img/${seconds}.png`);
   changeSrc(sec2, `./img/${seconds2}.png`);
 
-  setTimeout(showTime, 1000);
+  setInterval(showTime, 1000);
 };
 
 showTime();
