@@ -27,22 +27,22 @@ class Hamburger {
     return Hamburger.TOTAL.price;
   }
 }
-// маленький гамбургер з начинкою з сиру
+// small burger with cheese stuffing
 let hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_CHEESE);
 
-// добавка з майонезу
+// add mayo
 hamburger.addTopping(Hamburger.TOPPING_MAYO);
 
-// запитаємо скільки там калорій
+// how many calories in a burger?
 console.log("Calories: " + hamburger.calculate());
 
-// скільки коштує
+// how much does it cost?
 console.log("Price: " + hamburger.calculatePrice());
 
-// я тут передумав і вирішив додати ще приправу
+// I decided to add one more topping(sauce)
 hamburger.addTopping(Hamburger.TOPPING_SAUCE);
 
-// А скільки тепер коштує?
+// After some actions, I want to know the price
 console.log("Price with sauce: " + hamburger.calculatePrice());
 
 // Calories: 45
