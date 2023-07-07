@@ -1,4 +1,4 @@
-import Example from "./Example ";
+import Example from "./Example";
 import React from "react";
 
 class App extends React.Component {
