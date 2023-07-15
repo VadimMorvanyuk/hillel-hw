@@ -36,8 +36,8 @@ class App extends React.Component {
   addPostHandler = () => {
     const newPost = {
       id: this.state.posts.length + 1,
-      title: "New Post",
-      body: "This is a new post.",
+      title: "Type your title here...",
+      body: "Type your body here...",
     };
 
     this.setState((prevState) => ({
