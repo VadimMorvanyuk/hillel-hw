@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router";
 import { fetchPopularRepos } from "./api";
 import Languages from "./Languages";
 import ReposList from "./ReposList";
@@ -17,7 +18,11 @@ const languages = [
 ];
 
 const Popular = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState("All");
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const lang = searchParams.get("lang");
+
+  const [selectedLanguage, setSelectedLanguage] = useState(lang);
   const [loading, setLoading] = useState(false);
   const [repos, setRepos] = useState([]);
   const [error, setError] = useState(null);
@@ -25,24 +30,12 @@ const Popular = () => {
   useEffect(() => {
     setLoading(true);
     fetchPopularRepos(selectedLanguage)
-      .then((data) => setRepos(data))
-      .catch((error) => setError(error))
-      .finally(() => setLoading(false));
+      .then((data) => {
+        setRepos(data);
+        setLoading(false);
+      })
+      .catch((error) => setError(error));
   }, [selectedLanguage]);
-
-  if (loading) {
-    return (
-      <>
-        <Languages
-          languages={languages}
-          setSelectedLanguage={setSelectedLanguage}
-          selectedLanguage={selectedLanguage}
-          loading={loading}
-        />
-        <Loader />
-      </>
-    );
-  }
 
   if (error) {
     return <Error />;
@@ -50,13 +43,29 @@ const Popular = () => {
 
   return (
     <div>
-      <Languages
-        languages={languages}
-        setSelectedLanguage={setSelectedLanguage}
-        selectedLanguage={selectedLanguage}
-        loading={loading}
-      />
-      <ReposList repos={repos} />
+      {loading ? (
+        <>
+          <Languages
+            languages={languages}
+            setSelectedLanguage={setSelectedLanguage}
+            selectedLanguage={selectedLanguage}
+            loading={loading}
+          />
+          <Loader />
+        </>
+      ) : (
+        <>
+          {!loading && (
+            <Languages
+              languages={languages}
+              setSelectedLanguage={setSelectedLanguage}
+              selectedLanguage={selectedLanguage}
+              loading={loading}
+            />
+          )}
+          <ReposList repos={repos} />
+        </>
+      )}
     </div>
   );
 };

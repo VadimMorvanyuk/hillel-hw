@@ -1,6 +1,6 @@
-import React from "react";
+import { memo } from "react";
 
-const ReposList = React.memo(({ repos }) => {
+const ReposList = memo(({ repos }) => {
   return (
     <ul className="popular-list">
       {repos.map((repo, index) => {

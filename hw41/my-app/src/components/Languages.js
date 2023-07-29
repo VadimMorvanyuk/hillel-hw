@@ -1,19 +1,29 @@
-import React from "react";
+import { memo } from "react";
+import { Link } from "react-router-dom";
 
-const Languages = React.memo(
+const Languages = memo(
   ({ languages, setSelectedLanguage, selectedLanguage, loading }) => {
+
     return (
-      <ul className="languages">
-        {languages.map((language, index) => (
-          <li
-            key={index}
-            style={{ color: selectedLanguage === language ? "red" : "black" }}
-            onClick={() => !loading && setSelectedLanguage(language)}
-          >
-            {language}
-          </li>
-        ))}
-      </ul>
+      <>
+        <ul className="languages">
+          {languages.map((language, index) => (
+            <li
+              key={index}
+              onClick={() => !loading && setSelectedLanguage(language)}
+            >
+              <Link
+                style={{
+                  color: selectedLanguage === language ? "red" : "black",
+                }}
+                to={{ search: `?lang=${language}` }}
+              >
+                {language}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </>
     );
   }
 );
